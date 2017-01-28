@@ -13,9 +13,8 @@ router.get('/', (req, res, next) => {
 
 /* GET about page. */
 router.get('/about', (req, res, next) => {
-  res.render('index', { 
-    title: 'About',
-    date: currentDate});
+  res.render('about', { 
+    title: 'About'});
 });
 
 module.exports = router;
