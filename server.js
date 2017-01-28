@@ -1,56 +1,90 @@
-// Your server will live here
-// import connect
-let express = require('express');
-let app = express(); // Now app is instance of connect server
-// Create a port constant
-const localport = 3000;
-// start listening on the port
-/*
-* Get port from envrionment and store in Express
-*/ 
-var http = require('http')
+#!/usr/bin/env node
 
-let port = process.env.port || localport;
+/**
+ * Module dependencies.
+ */
 
-app.listen(port);
-console.log(`Server started at ${port}`);
+let app = require('./app');
+let debug = require('debug')('week3:server');
+let http = require('http');
 
-// ROUTING - Mounted our routes
+/**
+ * Get port from environment and store in Express.
+ */
 
-// Second route is '/hello' which is root of my website
-app.use('/hello', (req, res, next) => {
-    res.setHeader('Content-Type', 'text/plain');
-    res.end("Hello, World!");
-    next();
-});
+let port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 
-// req = request
-// res = response
-// next = next response in queue
+/**
+ * Create HTTP server.
+ */
 
-// First route is '/' which is root of my website
-app.use('/', (req, res, next) => {
-    res.setHeader('Content-Type', 'text/plain');
-    res.end("Welcome!");
-    next();
-});
+let server = http.createServer(app);
 
+/**
+ * Listen on provided port, on all network interfaces.
+ */
 
-/*
-function logger(req, res, next){
-    console.log(req.method, req.url);
-    next();
-};
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
-function helloWorld(req, res, next){
-    res.setHeader('Content-Type','text/plain');
-    res.end('Hello World');
-};
+/**
+ * Normalize a port into a number, string, or false.
+ */
 
-function goodbyeWorld(req, res, next){
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Goodbye World');
+function normalizePort(val) {
+  let port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
 }
 
-app.use(logger);
-*/
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  let bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  let addr = server.address();
+  let bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
