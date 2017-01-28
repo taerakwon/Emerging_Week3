@@ -14,11 +14,11 @@
   "author": "Taera Kwon",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/taerakwon/Emerging_Week2/issues"
+    "url": "https://github.com/taerakwon/Emerging_Week3/issues"
   },
-  "homepage": "https://github.com/taerakwon/Emerging_Week2#readme",
+  "homepage": "https://github.com/taerakwon/Emerging_Week3#readme",
   "dependencies": {
-    "connect": "^3.5.0"
+    "express": "^4.14.0"
   },
   "devDependencies": {}
 }

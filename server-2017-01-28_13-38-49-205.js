@@ -1,7 +1,7 @@
 // Your server will live here
 // import connect
 let express = require('express');
-let app = express(); // Now app is instance of connect server
+let app = connect(); // Now app is instance of connect server
 // Create a port constant
 const port = 3000;
 // start listening on the port
@@ -16,7 +16,6 @@ app.use('/hello', (req, res, next) => {
     res.end("Hello, World!");
     next();
 });
-
 // req = request
 // res = response
 // next = next response in queue
