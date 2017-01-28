@@ -1,0 +1,24 @@
+{
+  "name": "comp308-server-lesson",
+  "version": "1.0.0",
+  "description": "Server Connect App For Week 3",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taerakwon/Emerging_Week3.git"
+  },
+  "author": "Taera Kwon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taerakwon/Emerging_Week2/issues"
+  },
+  "homepage": "https://github.com/taerakwon/Emerging_Week2#readme",
+  "dependencies": {
+    "connect": "^3.5.0"
+  },
+  "devDependencies": {}
+}
