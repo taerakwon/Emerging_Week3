@@ -7,7 +7,8 @@ const localport = 3000;
 // start listening on the port
 /*
 * Get port from envrionment and store in Express
-*/ var process: NodeJS.Process;
+*/ 
+var http = require('http')
 
 let port = process.env.port || localport;
 
