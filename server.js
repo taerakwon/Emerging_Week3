@@ -3,8 +3,14 @@
 let express = require('express');
 let app = express(); // Now app is instance of connect server
 // Create a port constant
-const port = 3000;
+const localport = 3000;
 // start listening on the port
+/*
+* Get port from envrionment and store in Express
+*/ var process: NodeJS.Process;
+
+let port = process.env.port || localport;
+
 app.listen(port);
 console.log(`Server started at ${port}`);
 
